@@ -47,21 +47,14 @@ public class Farm implements Serializable{
 
     //***** RELACIONES *****
     //Relación uno a uno. Una Farm tiene un Category relacionada.
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     @JsonIgnoreProperties(value = {"farms"})
 	@JoinColumn(name = "category_id")
 	private Category category;
-    // @OneToOne
-	// @JoinColumn(name = "category_id")
-	// private Category category;
-
-    // Un Farm puede tener muchas Reservation y Messages.
-    
-    
+   
 
     @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL)
     @JsonIgnoreProperties(value = {"client", "farm"})
-    // @JsonIgnoreProperties("farm")
     private Set<Message> messages = new HashSet<>();
 
     @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL)

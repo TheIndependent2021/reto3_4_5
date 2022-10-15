@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.retos345.entities.Category;
 import com.example.retos345.entities.Farm;
 import com.example.retos345.services.FarmService;
 
@@ -44,6 +45,7 @@ public class FarmController {
 
     @PostMapping("/save")
     public ResponseEntity<Void> crearFarm(@RequestBody Farm farm){
+    
         this.farmService.crearFarm(farm);
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
